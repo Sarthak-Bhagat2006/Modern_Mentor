@@ -13,7 +13,7 @@ const passport = require("passport");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-require("./config/passport");
+
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
