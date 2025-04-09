@@ -1,61 +1,250 @@
 body {
-    background: url("/images/bg2.jpg") no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-  }
-  /* Optional: Add a dark overlay if text needs better contrast */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.3); /* adjust opacity here */
-    z-index: -1;
-  }
-  
-  /* Optional: Add card/background styling for content readability */
-  .container {
-    background-color: transparent; 
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin-top: 30px;
-  }
-
-.navbar{
-    height: 5rem;
-    background-color: white;
-
-}
-.glass-navbar {
-    background: rgba(255, 255, 255, 0.7); /* translucent */
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  }
-.fa-graduation-cap{
-    font-size: 2rem;
-}
-.nav-link{
-    color: #222222 !important;
-}
-.navbar-brand{
-    color: #6a489d;
-   
-}
-a{
-    text-decoration: none !important;
-    
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  overflow-x: hidden;
 }
 
-.clickable-card {
-    cursor: pointer;
-    transition: box-shadow 0.2s ease-in-out;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+.text-primary-custom {
+  color: #6a489d !important;
+}
+
+.bg-primary-custom {
+  background-color: #6a489d !important;
+}
+
+.btn-primary-custom {
+  background-color: #6a489d;
+  border-color: #6a489d;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: #5a3a8d;
+  border-color: #5a3a8d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(106, 72, 157, 0.3);
+}
+
+.btn-outline-primary-custom {
+  border-color: #6a489d;
+  color: #6a489d;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary-custom:hover {
+  background-color: #6a489d;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(106, 72, 157, 0.2);
+}
+
+/* Navbar styling with glassmorphism */
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.nav-link {
+  color: #333;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #6a489d;
+}
+
+.nav-link.active {
+  color: #6a489d;
+  position: relative;
+}
+
+.nav-link.active:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #6a489d;
+}
+
+/* Hero section styling */
+.hero-section {
+  min-height: 85vh;
+  background: linear-gradient(135deg, #f5f7ff 0%, #e5deff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  padding-top: 120px;
+  z-index: 2;
+  position: relative;
+}
+
+.hero-illustration {
+  position: absolute;
+  right: -5%;
+  bottom: -10%;
+  width: 55%;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.hero-blob {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 40%;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Card styling with glassmorphism */
+.card-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card-glass:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card {
+  margin-bottom: 1.5rem;
+  height: 100%;
+}
+
+.profile-img-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(45deg, #6a489d, #9b87f5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  font-weight: 600;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge-mentor {
+  background-color: #6a489d;
+}
+
+.badge-student {
+  background-color: #6c757d;
+}
+
+.social-links a {
+  color: #6c757d;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #6a489d;
+}
+
+/* Interest badges */
+.interest-badge {
+  background-color: #e5deff;
+  color: #6a489d;
+  font-weight: 500;
+  margin: 0.2rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+}
+
+/* Users grid styling */
+.users-header {
+  background: linear-gradient(135deg, #f5f7ff 0%, #e5deff 100%);
+  padding: 5rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Media Queries */
+@media (max-width: 767.98px) {
+  .hero-illustration {
+    opacity: 0.2;
   }
-.clickable-card:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+
+  .hero-content {
+    padding-top: 90px;
   }
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
