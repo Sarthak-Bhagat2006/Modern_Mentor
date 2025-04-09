@@ -1,0 +1,61 @@
+body {
+    background: url("/images/bg2.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+  /* Optional: Add a dark overlay if text needs better contrast */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3); /* adjust opacity here */
+    z-index: -1;
+  }
+  
+  /* Optional: Add card/background styling for content readability */
+  .container {
+    background-color: transparent; 
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 30px;
+  }
+
+.navbar{
+    height: 5rem;
+    background-color: white;
+
+}
+.glass-navbar {
+    background: rgba(255, 255, 255, 0.7); /* translucent */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+.fa-graduation-cap{
+    font-size: 2rem;
+}
+.nav-link{
+    color: #222222 !important;
+}
+.navbar-brand{
+    color: #6a489d;
+   
+}
+a{
+    text-decoration: none !important;
+    
+}
+
+.clickable-card {
+    cursor: pointer;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+.clickable-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  }

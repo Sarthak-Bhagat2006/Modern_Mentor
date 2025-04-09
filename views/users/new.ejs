@@ -1,0 +1,60 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+    <div class="row">
+        <div class="col-9 offset-2"><br><br>
+            <h3>Sign Up</h3>
+    <form method="POST" action="/users">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full name</label>
+          <input type="text" class="form-control" id="name" name="user[name]">
+      
+        </div>
+        <div class="row">
+        <div class="mb-3 col-md-5">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="user[email]">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+        <div class="mb-3 col-md-7">
+          <label for="password" class="form-label">Set Password</label>
+          <input type="password" class="form-control" id="password" name="user[password]">
+        </div>
+        </div>
+        <div class="row" >
+            
+        <div class="mb-3 col-md-5">
+          <label for="role" class="form-label">Enter role(Student/Mentor)</label>
+          <input type="text" class="form-control" id="role" name="user[role]">
+        
+        </div>
+        <div class="mb-3 col-md-7">
+            
+          <label for="domain" class="form-label">Enter Domains are you part of</label>
+          <input type="text" class="form-control" id="domain" name="user[domain]">
+        </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="linkedin" class="form-label">Paste linkedin profile Url</label>
+          <input type="text" class="form-control" id="linkedin" name="user[linkedin]">
+        </div>
+        <div class="mb-3">
+          <label for="github" class="form-label">Paste github profile Url</label>
+          <input type="text" class="form-control" id="github" name="user[github]">
+        </div>
+        <div class="mb-3">
+          <label for="about" class="form-label">About</label>
+          <textarea name="user[about]" placeholder="Enter about yourself" class="form-control" required></textarea>
+            <div class="invalid-feedback">about section should be filled </div>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    </div>
+</body>
+</html>

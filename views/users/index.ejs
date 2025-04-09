@@ -1,0 +1,20 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <br>
+    <h4>All Users <i class="fa-solid fa-users-rectangle"></i></h4><br>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    <% for(let user of allUsers) { %>
+         
+         <div class="card offset-1 mb-3 clickable-card" onclick="window.location.href='/users/<%= user._id %>'">
+        <div class="card-body">
+          <h5 class="card-title"> <%= user.name %> </h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary"> <%= user.role %> </h6>
+          <p class="card-text"> <%= user.domain %> </p>
+          <a href="<%= user.linkedin %>" class="card-link">Linkedin</a>
+          <a href="<%= user.github %>" class="card-link">Github</a>
+        </div>
+      </div>
+      <% } %>
+    </div>
+</body>
+</html>
