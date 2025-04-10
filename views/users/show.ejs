@@ -1,27 +1,34 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="container">
-    <br>
-    <% if (user.profileImg) { %>
-        <img src="<%= user.profileImage %>" alt="Profile Image" width="150" class="rounded-circle mx-auto d-block" />
-    <% } else { %>
-        <img  src="https://media.istockphoto.com/id/470100848/vector/male-profile-icon-white-on-the-blue-background.jpg?s=612x612&w=0&k=20&c=2Z3As7KdHqSKB6UDBpSIbMkwOgYQtbhSWrF1ZHX505E=" alt="Default Profile Image" width="150" class="rounded-circle  d-block offset-4" />
-      <% } %>
-      <br>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <!-- Profile Image -->
+    <div class="profile-img-wrapper mb-3 mt-3 text-center">
+      <img src="<%= user.image %>" alt="<%= user.name %>" class="profile-img">
+    </div>
 
-      <div class="row col-6 offset-4">
-    <h2 class="mt-3"><%= user.name %></h2>
-  <p><strong>Role:</strong> <%= user.role %></p>
-  <p><strong>Domain:</strong> <%= user.domain.join(", ") %></p>
-  <p>
-  <p><b>About :</b> <%= user.about %></p>  
-  <div class="links">
-    <% if (user.linkedin) { %>
-      <a href="<%= user.linkedin %>" target="_blank">LinkedIn</a>
-    <% } %>
-    <% if (user.github) { %>
-      | <a href="<%= user.github %>" target="_blank">GitHub</a>
-    <% } %></div>
-  </p>
-</div>
+    <!-- User Info -->
+    <div class="col-md-8 col-lg-6 text-center">
+      <h2 class="mt-3 mb-2"><%= user.name %></h2>
+      <p><strong>Role:</strong> <%= user.role %></p>
+      <p><strong>Domain:</strong> <%= user.domain.join(", ") %></p>
+      <p><strong>Skills:</strong> <%= user.skills %></p>
+      <p><strong>About:</strong> <%= user.about %></p>
+
+      <!-- Social Links -->
+      <div class="social-links mb-3" style="font-size: 1.5rem;">
+        <% if (user.linkedin) { %>
+          <a href="<%= user.linkedin %>" target="_blank" class="mr-3">
+            <i class="fab fa-linkedin fa-lg"></i>
+          </a>
+        <% } %>
+        <% if (user.github) { %>
+          <a href="<%= user.github %>" target="_blank" class="mr-3">
+            <i class="fab fa-github fa-lg"></i>
+          </a>
+        <% } %>
+      </div>
+      <a href="#" class="btn btn-dark">Add in Group</a>
+    </div>
+  </div>
 </div>
