@@ -19,10 +19,11 @@ const userSchema = new Schema(
     
     role: {
       type: String,
-      enum: ["Student", "Mentor"], 
+       
       required: true,
     },
     domain: [{ type: String }],
+    skills: [{ type: String }],
     linkedin: {
       type: String,
       default: ""

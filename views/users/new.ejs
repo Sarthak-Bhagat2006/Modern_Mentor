@@ -1,58 +1,95 @@
 <% layout("/layouts/boilerplate") %>
 
 <body>
+ 
     <div class="row">
         <div class="col-9 offset-2"><br><br>
+          <br><br>
             <h3>Sign Up</h3>
-    <form method="POST" action="/users">
+    <form method="POST" action="/users" novalidate class="needs-validation">
         <div class="mb-3">
           <label for="name" class="form-label">Full name</label>
-          <input type="text" class="form-control" id="name" name="user[name]">
-      
+          <input type="text" class="form-control" id="name" name="user[name] " required>
+          <div class="invalid-feedback">Name section should be filled</div>
         </div>
         <div class="row">
         <div class="mb-3 col-md-5">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="user[email]">
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="user[email]" required>
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>
         <div class="mb-3 col-md-7">
           <label for="password" class="form-label">Set Password</label>
-          <input type="password" class="form-control" id="password" name="user[password]">
+          <input type="password" class="form-control" id="password" name="user[password]" required>
+          <div class="invalid-feedback">Password section should be filled</div>
         </div>
         </div>
         <div class="row" >
             
-        <div class="mb-3 col-md-5">
-          <label for="role" class="form-label">Enter role(Student/Mentor)</label>
-          <input type="text" class="form-control" id="role" name="user[role]">
-        
+        <div class="mb3 col-md-5">
+          <label for="role" class="form-label">Enter Role</label>
+          <select class="form-select" aria-label="Default select example" name="user[role]" required>
+            <option value="" disabled selected>Choose Role</option>
+            <option value="Student">Student</option>
+            <option value="Student">Mentor</option>
+            
+          </select>
+          <div class="invalid-feedback">Role section should be filled</div>
         </div>
         <div class="mb-3 col-md-7">
+          <label for="domain" class="form-label">Enter Club are you from</label>  
+          <select class="form-select" aria-label="Default select example" name="user[domain]" required>
+            <option value="" disabled selected>Select Domain</option>
+            <option value="Foss Club">Foss Club</option>
+            <option value="Robotics Club">Robotics Club</option>
+            <option value="IEEE PES MCOE STUDENT BRANCH">IEEE PES MCOE STUDENT BRANCH</option>
+            <option value="ED Cell">ED Cell</option>
+            <option value="Pegasus Club">Pegasus Club</option>
+            <option value="GraphiX Club">GraphiX Club</option>
+            <option value="Mars Club">Mars Club</option>
+            <option value="Cypher Club">Cypher Club</option>
+            <option value=">Aero Club">Aero Club</option>
+            <option value="Brain Stormer's Club">Brain Stormer's Club</option>
+            <option value="Wall Magazine Club">Wall Magazine Club</option>
+            <option value="Metamorph Club">Metamorph Club</option>
+            <option value="Pegasus Club">Pegasus Club</option>
+            <option value="Code Cooks Club">Code Cooks Club</option>
+            <option value="Technofuel Club">Technofuel Club</option>
+            <option value="Arts Glimpse Club">Arts Glimpse Club</option>
+            <option value="CoDE Club AIML">CoDE Club AIML</option>
+            <option value="CoDE Club AIDS">CoDE Club AIDS</option>
+            <option value="PixInSight Club">PixInSight Club</option>
+            <option value="NSS">NSS</option>
+            <option value="Not join any yet!!">Not join any yet!!</option>
+           
             
-          <label for="domain" class="form-label">Enter Domains are you part of</label>
-          <input type="text" class="form-control" id="domain" name="user[domain]">
+          </select>
+          <div class="invalid-feedback">Domain section should be filled</div>
         </div>
+        </div>
+        <div class="mb-3">
+          <label for="skills" class="form-label">Enter your Skills</label>
+          <input type="text" class="form-control" id="skills" name="user[skills]" required> 
+          <div class="invalid-feedback">Skills section should be filled</div>
         </div>
         
-        <div class="mb-3">
+        <div class="row" >
+        <div class="mb-3 col-md-5">
           <label for="linkedin" class="form-label">Paste linkedin profile Url</label>
-          <input type="text" class="form-control" id="linkedin" name="user[linkedin]">
+          <input type="text" class="form-control" id="linkedin" name="user[linkedin]" required>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-md-7">
           <label for="github" class="form-label">Paste github profile Url</label>
-          <input type="text" class="form-control" id="github" name="user[github]">
+          <input type="text" class="form-control" id="github" name="user[github]" required>
         </div>
+      </div>
         <div class="mb-3">
           <label for="about" class="form-label">About</label>
           <textarea name="user[about]" placeholder="Enter about yourself" class="form-control" required></textarea>
             <div class="invalid-feedback">about section should be filled </div>
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        
+        <button type="submit" class="btn btn-info">Submit</button>
       </form>
     </div>
     </div>
