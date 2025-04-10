@@ -2,10 +2,15 @@
 <%- include("../includes/hero.ejs") %>
 <body>
   <br>
-    <h4>All Users <i class="fa-solid fa-users-rectangle"></i></h4><br>
+  <div class="text-center my-4">
+    <h4 class="text-primary-custom fw-bold">
+      <i class="fa-solid fa-users-rectangle me-2"></i> All Users
+    </h4>
+    <hr class="w-25 mx-auto mt-2" style="border-top: 2px solid #6a489d;">
+  </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     <% for(let user of allUsers) { %>
-      <div class="col-lg-4 col-md-6">
+      <div class="col-lg-4 col-md-6 mb-2">
         <div class="card-glass profile-card p-4 text-center clickable-card" onclick="window.location.href='/users/<%= user._id %>'">
           <div class="profile-img-wrapper mb-3">
             <img src="" alt="<%= user.name %>" class="profile-img">
@@ -26,6 +31,7 @@
           <a href="#" class="btn btn-sm btn-primary-custom">Connect</a>
         </div>
       </div>
+
       <% } %>
     </div>
 
