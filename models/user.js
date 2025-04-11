@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const passportLocalMongoose = require("passport-local-mongoose");
 
 
 const userSchema = new Schema(
@@ -28,12 +29,6 @@ const userSchema = new Schema(
       type: String,
       default: ""
     },
-    password: {
-      type: String,
-      required: function () {
-        return !this.linkedin; // If there's no LinkedIn URL, password is required
-      }
-    },
     profileImage: String,
     github: {
       type: String,
@@ -54,6 +49,7 @@ const userSchema = new Schema(
   },
   
 );
+// User.plugin(passportLocalMongoose);
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
