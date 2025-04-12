@@ -6,15 +6,17 @@ const passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      
-    },
+
     email: {
       type: String,
       required: true,
       unique: true,
+     
+    },
+    name: {
+      type: String,
+      required: true,
+      
      
     },
     
@@ -49,68 +51,9 @@ const userSchema = new Schema(
   },
   
 );
-// User.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose,{ usernameField: 'email',
+  usernameUnique: false});
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
-
-// const addUser = async ()=>{
-//   let user1 = new User({
-//     name: 'Sarthak Bhagat',
-//     email: 'bhagatsarthak2132@gmail.com',
-//     role: 'Mentor',
-//     domain: [ 'ED cell member, IEEE Member' ],
-//     linkedin: 'https://www.linkedin.com/in/sarthak-bhagat-8984b9279/',
-//     password: 'Sarthak@2132',
-//     github: 'https://github.com/Sarthak-Bhagat2006',
-//     about: 'I am 2nd year student at PES Modern college of engineering and I passinate about MERN stack development',
-//   });
-
-  
-//   await user1.save();
- 
-// }
-
-// addUser();
-
-
-
-// const profileSchema = new Schema(
-//     {
-//       userId: { type: Schema.Types.ObjectId, ref: "User", required: true, unique: true },
-//       linkedinUrl: { type: String, default: "" },
-//       githubUrl: { type: String, default: "" },
-//       bio: { type: String, default: "" },
-//       skills: [{ type: String }],
-//     },
-//     { timestamps: true }
-//   );
-  
-//   const Profile = mongoose.model("Profile", profileSchema);
-  
-//   const mentorshipSchema = new Schema(
-//     {
-//       mentorId: { type: Schema.Types.ObjectId, ref: "User", required: true },
-//       studentId: { type: Schema.Types.ObjectId, ref: "User", required: true },
-//       status: { type: String, enum: ["Pending", "Accepted", "Rejected"], default: "Pending" },
-//     },
-//     { timestamps: true }
-//   );
-
-//   const Mentorship = mongoose.model("Mentorship", mentorshipSchema);
-
-//   const groupSchema = new Schema(
-//     {
-//       groupName: { type: String, required: true },
-//       members: [{ type: Schema.Types.ObjectId, ref: "User" }],
-//       description: { type: String },
-//     },
-//     { timestamps: true }
-//   );
-//   const Group = mongoose.model("Group", groupSchema);
-  
-  
-  // module.exports = { User, Profile, Mentorship, Group };
-  
-
 

@@ -1,8 +1,13 @@
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #fafafa;
-  color: #333;
+  background-color: #1A1B27 !important; /* Deep navy black */
+  color: #F3F4F6 !important; /* Light gray/white */
+  margin-top: 2rem;
   overflow-x: hidden;
+}
+
+.container {
+  background-color: #1A1B27;
 }
 
 /* Typography */
@@ -11,86 +16,102 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-primary-custom {
-  color: #6a489d !important;
+  color: #A78BFA !important; /* Soft purple */
 }
 
 .bg-primary-custom {
-  background-color: #6a489d !important;
+  background-color: #A78BFA !important;
 }
 
+/* Primary Button */
 .btn-primary-custom {
-  background-color: #6a489d;
-  border-color: #6a489d;
-  color: white;
-  transition: all 0.3s ease;
+  background-color: #7C3AED !important; /* Bright purple */
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
 }
 
 .btn-primary-custom:hover {
-  background-color: #5a3a8d;
-  border-color: #5a3a8d;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(106, 72, 157, 0.3);
+  background-color: #6B21A8 !important; /* Hover: slightly darker purple */
+  border-color: #6B21A8 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3) !important;
 }
 
+/* Outline Button */
 .btn-outline-primary-custom {
-  border-color: #6a489d;
-  color: #6a489d;
+  border-color: #A78BFA !important;
+  color: #A78BFA !important;
   transition: all 0.3s ease;
 }
 
 .btn-outline-primary-custom:hover {
-  background-color: #6a489d;
-  color: white;
+  background-color: #A78BFA !important;
+  color: #1A1B27 !important;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(106, 72, 157, 0.2);
+  box-shadow: 0 4px 12px rgba(167, 139, 250, 0.25);
 }
 
 /* Navbar styling with glassmorphism */
 .navbar-glass {
-  background: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: #1A1B27 !important; /* Deep navy */
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15) !important; /* Subtle purple tint */
 }
 
 .navbar-brand {
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  color: #A78BFA !important; /* Soft purple branding */
 }
 
 .nav-link {
-  color: #333;
-  font-weight: 500;
-  margin: 0 0.5rem;
-  transition: color 0.3s ease;
+  color: #F3F4F6 !important; /* Light text */
+  font-weight: 500 !important;
+  margin: 0 0.5rem !important;
+  transition: color 0.3s ease !important;
 }
 
 .nav-link:hover {
-  color: #6a489d;
+  color: #A78BFA !important; /* Soft purple on hover */
 }
 
 .nav-link.active {
-  color: #6a489d;
-  position: relative;
+  color: #7C3AED !important; /* Bright purple when active */
+  position: relative !important;
 }
 
 .nav-link.active:after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: -2px !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 2px !important;
+  background-color: #7C3AED !important; /* Underline with bright purple */
+}
+.nav-link::after {
   content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
+  display: block;
   height: 2px;
-  background-color: #6a489d;
+  width: 0%;
+  background-color: #A78BFA;
+  transition: width 0.3s;
 }
 
+.nav-link:hover::after {
+  width: 100%;
+}
 /* Hero section styling */
 .hero-section {
   min-height: 85vh;
-  background: linear-gradient(135deg, #f5f7ff 0%, #e5deff 100%);
+  min-width: 90vh;
+  background: linear-gradient(135deg, #1A1B27 0%, #2C1E48 100%); /* Deep navy to rich purple */
   position: relative;
   overflow: hidden;
+  color: #F3F4F6; /* Light gray text */
 }
 
 .hero-content {
@@ -99,38 +120,65 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
+/* Optional: Title highlights */
+.hero-content h1 span {
+  color: #A78BFA; /* Soft purple for emphasis */
+}
+
 .hero-illustration {
-  position: absolute;
+  /* position: absolute; */
   right: -5%;
   bottom: -10%;
   width: 55%;
-  opacity: 0.8;
+  /* opacity: 0.85; */
+  
   z-index: 1;
 }
+.img-fluid {
+  height: 400px !important;
+  width: 600px !important;
+}
 
+/* Optional: purple blob overlay */
 .hero-blob {
   position: absolute;
   top: -20%;
   left: -10%;
-  width: 40%;
-  opacity: 0.5;
+  width: 68%;
+  opacity: 0.4;
   z-index: 0;
+  filter: blur(60px);
+  background: #7C3AED; /* Bright purple glow blob */
+  border-radius: 50%;
 }
+.text {
+  color: #F3F4F6; /* Light gray text for dark backgrounds */
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+
+
+
+
 
 /* Card styling with glassmorphism */
 .card-glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(167, 139, 250, 0.1); /* soft purple glass background */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15); /* purple glow */
   transition: all 0.3s ease;
+  color: #F3F4F6;
 }
 
 .card-glass:hover {
   transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 20px rgba(167, 139, 250, 0.3); /* deeper purple glow */
 }
 
 .profile-card {
@@ -142,9 +190,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 80px;
   height: 80px;
   margin: 0 auto;
-  border-radius: 50%;  /* This already makes it round */
-  overflow: hidden;    /* Ensures the image fits inside the circle */
-  background: linear-gradient(45deg, #6a489d, #9b87f5); /* Gradient background */
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(45deg, #A78BFA, #7C3AED); /* Updated gradient */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,52 +202,63 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .profile-img {
-  width: 100%;        /* Makes sure the image covers the whole container */
-  height: 100%;       /* Ensures the height is equal to the width */
-  object-fit: cover;  /* Ensures the image fits the circular shape without distortion */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
 .profile-img-fallback {
   font-size: 2rem;
   color: white;
   font-weight: 600;
 }
+
 .badge-mentor {
-  background-color: #6a489d;
+  background-color: #7C3AED; /* Bright purple badge */
+  color: #F3F4F6;
 }
 
 .badge-student {
-  background-color: #6c757d;
+  background-color: #FACC15; /* Gold accent */
+  color: #1A1B27;
+  font-weight: 600;
 }
 
 .social-links a {
-  color: #6c757d;
+  color: #A78BFA;
   margin: 0 0.5rem;
   transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-  color: #6a489d;
+  color: #FACC15;
 }
 
 /* Interest badges */
 .interest-badge {
-  background-color: #e5deff;
-  color: #6a489d;
+  background-color: rgba(167, 139, 250, 0.2); /* transparent soft purple */
+  color: #A78BFA;
   font-weight: 500;
   margin: 0.2rem;
   padding: 0.35rem 0.75rem;
   border-radius: 50px;
+  transition: all 0.3s ease;
 }
 
-/* Users grid styling */
+.interest-badge:hover {
+  background-color: #7C3AED;
+  color: #F3F4F6;
+}
+
+/* Users grid header background */
 .users-header {
-  background: linear-gradient(135deg, #f5f7ff 0%, #e5deff 100%);
+  background: linear-gradient(135deg, #1A1B27 0%, #2C1E48 100%);
   padding: 5rem 0 3rem;
   position: relative;
   overflow: hidden;
+  color: #F3F4F6;
 }
 
-/* Media Queries */
 @media (max-width: 767.98px) {
   .hero-illustration {
     opacity: 0.2;
@@ -224,10 +283,10 @@ h1, h2, h3, h4, h5, h6 {
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #7C3AEDaa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #FACC15aa);
 }
 
 @keyframes logo-spin {
@@ -250,5 +309,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .read-the-docs {
-  color: #888;
+  color: #9CA3AF;
 }
+
+.styled-image {
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(14, 165, 233, 0.3); /* soft sky blue glow */
+  height: 2rem;
+}
+
+
