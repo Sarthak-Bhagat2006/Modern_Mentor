@@ -6,7 +6,7 @@
         <div class="col-9 offset-2"><br><br>
           <br><br>
             <h3>Sign Up</h3>
-    <form method="POST" action="/users" novalidate class="needs-validation">
+    <form method="POST" action="/signup" novalidate class="needs-validation">
         <div class="mb-3">
           <label for="name" class="form-label">Full name</label>
           <input type="text" class="form-control" id="name" name="user[name] " required>
@@ -31,7 +31,7 @@
           <select class="form-select" aria-label="Default select example" name="user[role]" required>
             <option value="" disabled selected>Choose Role</option>
             <option value="Student">Student</option>
-            <option value="Student">Mentor</option>
+            <option value="Mentor">Mentor</option>
             
           </select>
           <div class="invalid-feedback">Role section should be filled</div>

@@ -1,0 +1,34 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+    <body>
+        <br>
+        <br><br>
+        <div class="text-center my-4">
+          <h4 class="text-primary-custom fw-bold">
+            <i class="fa-solid fa-users-rectangle me-2"></i> All Groups
+          </h4>
+          <hr class="w-25 mx-auto mt-2" style="border-top: 2px solid #6a489d;">
+        </div>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+          <% for(let group of allGroups) { %>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card-glass profile-card p-4 text-center clickable-card" onclick="window.location.href='/users/'">
+                <div class="profile-img-wrapper mb-3">
+                  <img src="" alt="<%= group.groupName %>" class="profile-img">
+                </div>
+                <h4 class="mb-1"><%= group.groupName %> </h4>
+                <span class="badge badge-mentor mb-2"> <%= group.Mentors.name %> </span>
+                <p class=" mb-3"></p>
+                <div class="d-flex flex-wrap justify-content-center mb-3">
+                  <span class="interest-badge"><%= group.description %> </span>
+                  
+                </div>
+                
+                <a href="#" class="btn btn-sm btn-primary-custom">Connect</a>
+              </div>
+            </div>
+      
+            <% } %>
+          </div>
+</body>
