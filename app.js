@@ -8,9 +8,16 @@ const methodOverride = require("method-override");
 const ejsMate = require('ejs-mate');
 const session = require("express-session")
 const flash = require("connect-flash");
-
+const wrapAsync = require("./utils/wrapAsync");
+const ExpressError = require("./utils/ExpressError");
+const groups = require("./routes/groups");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const {isLoggedIn} = require("./middleware");
+
+const {saveRedirectUser} = require("./middleware");
+const { group } = require("console");
+
 
 main()
  .then(()=>{
@@ -64,25 +71,29 @@ app.use((req,res,next)=>{
   res.locals.error = req.flash("error");
   next();
 })
+app.use((req,res,next)=>{
+  res.locals.currUser = req.user;
+  next();
+})
+
+app.use("/",groups);
 
 
 //Users Route
 
-app.get("/users",async (req,res)=>{
+app.get("/users",wrapAsync(async (req,res)=>{
     const allUsers = await User.find({});
     
     res.render("users/index",{allUsers});
-});
-
-//signUp or create route
+}));
 
 app.get("/signup",(req,res)=>{
-    res.render("users/signup");
+  res.render("users/signup");
 })
 
-app.post("/users",async (req,res)=>{
+app.post("/signup",async (req,res)=>{
   try{
-    const {password} = req.body.user;
+  const {password} = req.body.user;
   const newUser = new User({
     
     name: req.body.user.name,
@@ -95,9 +106,15 @@ app.post("/users",async (req,res)=>{
     profileImage: req.body.user.profileImage,
     about: req.body.user.about,
   });
-    await User.register(newUser,password);
-    req.flash("Success","User Added Succefully");
-    res.redirect("/users")
+    const registerUser = await User.register(newUser,password);
+    req.login(registerUser, (err)=>{
+      if((err)){
+        return next(err)
+      }
+      req.flash("success","User Added Succefully");
+      res.redirect("/users");
+    });
+   
   }catch(e){
     req.flash("error",e.message);
     res.redirect("users/signup");
@@ -105,29 +122,65 @@ app.post("/users",async (req,res)=>{
   
 });
 
+
 // Login 
 
 app.get("/login", (req,res)=>{
   res.render("users/login");
 });
 
-app.post("/login",
-  passport.authenticate('local',{ failureRedirect: '/login',failureFlash: true }),
-  async(req,res)=>{
-    res.send("Welcome to ModernMentor")
+app.post("/login",saveRedirectUser,
+passport.authenticate('local',{ failureRedirect: '/login',failureFlash: true }),
+(req,res)=>{
+  req.flash("success","You are logged in now");
+  let redirectUrl = res.locals.redirectUrl || '/users';
+  
+  res.redirect(redirectUrl);
 });
 
-  
-  
+app.get("/logout",(req,res,next)=>{
+  req.logout((err)=>{
+    if(err){
+      return next(err);
+    }
+    req.flash("success","You are Logged out now");
+    res.redirect("/users");
+  })
+});
 
-  //show route
 
-app.get("/users/:id", async(req,res)=>{
+
+
+
+
+app.get("/community",isLoggedIn,(req,res)=>{
+  res.render("users/community");
+});
+
+
+//show route
+
+app.get("/users/:id",isLoggedIn, wrapAsync(async(req,res)=>{
     let {id} = req.params;
     let user = await User.findById(id);
     
     res.render("users/show",{ user });
+}));
+
+app.use((req, res, next) => {
+  
+    next(new ExpressError(404, "Page Not Found"));
+  
+ 
 });
+
+// Error handler middleware (must have 4 parameters)
+app.use((err, req, res, next) => {
+  const { statusCode = 500, message = "Something went wrong!" } = err;
+  res.status(statusCode).send( message );
+});
+
+
 
 app.listen(8080,() =>{
     console.log("Server is Listing to port 8080");

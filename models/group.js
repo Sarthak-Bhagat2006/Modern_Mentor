@@ -5,11 +5,15 @@ const Schema = mongoose.Schema;
 const groupSchema = new Schema(
         {
           groupName: { type: String, required: true },
+          groupAdmin: {
+            type: Schema.Types.ObjectId, 
+            ref: "User"
+          },
           members: [{ type: Schema.Types.ObjectId, ref: "User" }],
           Mentors: [{ type: Schema.Types.ObjectId, ref: "User" }],
           description: { type: String },
         },
-        { timestamps: true }
+        
       );
       const Group = mongoose.model("Group", groupSchema);
 
@@ -18,8 +22,8 @@ const groupSchema = new Schema(
       const addGroup = async ()=>{
   let group1 = new Group({
     groupName: 'Inovetors',
-    members: ['67f4cbff3f90d854e10ff515','67f4cbc7b4f1792a0e42b9bd','67f4cb5e71debaa60d3a4557'],
-    Mentors :['67f4cc1e47539592bd49c671'],
+    members: ['67fa309bb6752abdcdf35f2e','67fa362883ab780e35bd434e','67fa38ac99be4d7df5de80ee'],
+    Mentors :['67fa362883ab780e35bd434e'],
     description:"Working on project that helps student to make groups for hackthon",
   });
 
