@@ -81,10 +81,15 @@ app.use("/",groups);
 
 //Users Route
 
-app.get("/users",wrapAsync(async (req,res)=>{
-    const allUsers = await User.find({});
+app.get("/users",isLoggedIn,wrapAsync(async (req,res)=>{
+    const allUsers = await User.find({_id:{$nin: req.user._id}});
     
     res.render("users/index",{allUsers});
+}));
+app.get("/allusers",isLoggedIn,wrapAsync(async (req,res)=>{
+    const allUsers = await User.find({_id:{$nin: req.user._id}});
+   
+    res.render("users/indexall",{allUsers});
 }));
 
 app.get("/signup",(req,res)=>{
