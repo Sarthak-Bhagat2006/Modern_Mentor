@@ -1,17 +1,17 @@
 <% layout("/layouts/boilerplate") %>
-
+<br>
 <div class="container mt-5">
   <div class="row justify-content-center">
     <!-- Profile Image -->
     <div class="profile-img-wrapper mb-3 mt-3 text-center">
-      <img src="<%= user.image %>" alt="<%= user.name %>" class="profile-img">
+      <img  alt="<%= user.name %>" class="profile-img">
     </div>
 
     <!-- User Info -->
     <div class="col-md-8 col-lg-6 text-center">
-      <h2 class="mt-3 mb-2"><%= user.name %></h2>
+     
       <p><strong>Role:</strong> <%= user.role %></p>
-      <p><strong>Domain:</strong> <%= user.domain.join(", ") %></p>
+      <p><strong>Domain:</strong> <%= user.domain %></p>
       <p><strong>Skills:</strong> <%= user.skills %></p>
       <p><strong>About:</strong> <%= user.about %></p>
 
@@ -27,8 +27,8 @@
             <i class="fab fa-github fa-lg"></i>
           </a>
         <% } %>
-      </div>
-      <a href="#" class="btn btn-dark">Add in Group</a>
+      </div><br>
+      <a href="#" class="btn btn-light">Request to Add in group</a>
     </div>
   </div>
 </div>

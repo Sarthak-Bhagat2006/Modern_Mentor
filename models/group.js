@@ -10,9 +10,15 @@ const groupSchema = new Schema(
             ref: "User"
           },
           members: [{ type: Schema.Types.ObjectId, ref: "User" }],
-          Mentors: [{ type: Schema.Types.ObjectId, ref: "User" }],
+          Mentors: { type: Schema.Types.ObjectId, ref: "User" },
           description: { type: String },
+
+        pendingMembers: [{ 
+          user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+          invitedAt: { type: Date, default: Date.now }
+        }]
         },
+        
         
       );
       const Group = mongoose.model("Group", groupSchema);
@@ -22,9 +28,10 @@ const groupSchema = new Schema(
       const addGroup = async ()=>{
   let group1 = new Group({
     groupName: 'Inovetors',
-    members: ['67fa309bb6752abdcdf35f2e','67fa362883ab780e35bd434e','67fa38ac99be4d7df5de80ee'],
-    Mentors :['67fa362883ab780e35bd434e'],
+    members: ['67fd605bc29788f750317287','67fa2fd7b6752abdcdf35f2a','67fd4ea47126df76e97e608d'],
+    Mentors :['67fd79d5d1c7346d93cc49cd'],
     description:"Working on project that helps student to make groups for hackthon",
+    admin: '67fa2fd7b6752abdcdf35f2a',
   });
 
   

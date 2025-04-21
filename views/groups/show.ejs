@@ -1,0 +1,28 @@
+
+
+<% layout("/layouts/boilerplate") %>
+<br>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <!-- Profile Image -->
+    <div class="profile-img-wrapper mb-3 mt-3 text-center">
+      <img  alt="<%= group.groupName %>" class="profile-img">
+    </div>
+
+    <!-- User Info -->
+    <div class="col-md-8 col-lg-6 text-center">
+      <br>
+      <p><strong>Admin : </strong> <%= group.groupAdmin %></p>
+      <p><strong>Mentor : </strong> <%= group.Mentors.name %></p>
+      <p><strong>Members : </strong><% group.members.forEach(member => { %>
+        <span class="badge badge-mentor mb-2"><%= member.name %></span>
+      <% }); %></p>
+      
+      <p><strong>About:</strong> <%= group.description %></p>
+      
+     <br><br>
+      <a href="#" class="btn btn-light">Request to join</a>
+    </div>
+  </div>
+</div>
+<hr>

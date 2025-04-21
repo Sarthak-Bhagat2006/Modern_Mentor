@@ -1,0 +1,61 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+  <br>
+  <br>
+  <div class="text-center my-4">
+    <h4 class="text-primary-custom fw-bold">
+      <i class="fa-solid fa-users-rectangle me-2"></i> All Users
+    </h4>
+    <hr class="w-25 mx-auto mt-2" style="border-top: 2px solid #6a489d;">
+   <form action="/create-group" method="get">
+    <button type="submit" class="btn btn-primary-custom btn-lg border border-1 border-dark">Create</button>
+   </form>
+  </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    <% for(let user of allUsers) { %>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card-glass profile-card p-4 text-center">
+          <div class="profile-img-wrapper mb-3">
+            <img src="" alt="<%= user.name %>" class="profile-img">
+          </div>
+          <h4 class="mb-1"><%= user.name %> </h4>
+          <span class="badge badge-mentor mb-2"> <%= user.role %> </span>
+          <p class=" mb-3"><%= user.skills%> </p>
+          <div class="d-flex flex-wrap justify-content-center mb-3">
+            <span class="interest-badge"><%= user.domain %> </span>
+            
+          </div>
+          <div class="social-links mb-3">
+            <a href="<%= user.linkedin %>"><i class="fab fa-linkedin fa-lg"></i></a>
+            <a href="<%= user.github %>"><i class="fab fa-github fa-lg"></i></a>
+            
+          </div>
+          <form action="allusers" method="post">
+            <input type="hidden" name="memberId" value="<%= user._id %>" 
+
+            />
+            <label class="wrapper">
+              <input
+                type="checkbox"
+                name="confirm"
+                onchange="if(this.checked) this.form.submit();" 
+                <%= selectedMembers.includes(user._id.toString()) ? "checked disabled" : "" %> 
+              />
+              <div class="btn"></div>
+              <div class="tooltip"><svg></svg><span style="color: black;">Requested</span></div>
+              <svg></svg>
+            </label>
+          </form>
+          
+          <a href="/users/<%= user._id %>" class="btn btn-sm btn-primary-custom">More Info</a>
+        </div>
+      </div>
+
+      <% } %>
+    </div>
+
+    <%- include("../includes/pagination.ejs") %>
+</body>
+
+
