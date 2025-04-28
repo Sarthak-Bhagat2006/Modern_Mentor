@@ -12,8 +12,8 @@
     <!-- User Info -->
     <div class="col-md-8 col-lg-6 text-center">
       <br>
-      <p><strong>Admin : </strong> <%= group.groupAdmin %></p>
-      <p><strong>Mentor : </strong> <%= group.Mentors.name %></p>
+      <p><strong>Admin : </strong> <%= group.groupAdmin.name %></p>
+      <p><strong>Mentor : </strong> <%= group.Mentors %></p>
       <p><strong>Members : </strong><% group.members.forEach(member => { %>
         <span class="badge badge-mentor mb-2"><%= member.name %></span>
       <% }); %></p>
