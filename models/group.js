@@ -13,10 +13,7 @@ const groupSchema = new Schema(
           Mentors: { type: Schema.Types.ObjectId, ref: "User" },
           description: { type: String },
 
-        pendingMembers: [{ 
-          user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-          invitedAt: { type: Date, default: Date.now }
-        }]
+        pendingMembers:[{ type: Schema.Types.ObjectId, ref: "User" }],
         },
         
         

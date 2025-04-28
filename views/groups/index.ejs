@@ -4,27 +4,42 @@
     <body>
         <br>
         <br>
+
+
         <div class="text-center my-4">
           <h4 class="text-primary-custom fw-bold">
             <i class="fa-solid fa-users-rectangle me-2"></i> All Groups
           </h4>
           <hr class="w-25 mx-auto mt-2" style="border-top: 2px solid #6a489d;">
         </div>
+
           <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
           <% for(let group of allGroups) { %>
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card-glass profile-card p-4 text-center ">
+
                 <div class="profile-img-wrapper mb-3">
                   <img src="" alt="<%= group.groupName %>" class="profile-img">
                 </div>
+
                 <h4 class="mb-1"><%= group.groupName %> </h4>
+
                 <span class="badge badge-mentor mb-2">Mentor: <%= group.Mentors?.name %> </span>
                
                 <i><p>Admin :<%= group.groupAdmin ? group.groupAdmin.name : 'Unknown' %></p></i>
+
+                <% if(group.members.length != 0){  %>
                 <p>Members : <% group.members.forEach(member => { %>
                   <span class="badge badge-mentor mb-2"><%= member.name %></span>
-                <% }); %></p>
-                <p class=" mb-3">
+                  <% }); %></p>
+                <% } %>
+                <% if(group.pendingMembers.length != 0){  %>
+                  <p>Requested Members : <% group.pendingMembers.forEach(pendingMember => { %>
+                    <span class="badge badge-mentor mb-2"><%= pendingMember.name %></span>
+                  <% }); %></p>
+                   </p>
+                <% } %>
+                
                 <div class="d-flex flex-wrap justify-content-center mb-3">
                   <span class="interest-badge"><%= group.description %> </span>
                   
