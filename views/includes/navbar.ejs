@@ -1,32 +1,38 @@
-
-
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-glass fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="/users">
-        <span class="text-primary-custom">Modern</span><span style="color: white;">Mentor</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/users">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/community">Community</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/groups">Hackathon Groups</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Mentors</a>
-          </li>
-        </ul>
-        <div class="d-flex">
-          <!-- From Uiverse.io by Zain-Muhammad --> 
-           <form action="/notifications" method="get">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-glass fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/users">
+      <span class="text-primary-custom">Modern</span
+      ><span style="color: white">Mentor</span>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/users">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/community">Community</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/groups">Hackathon Groups</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Mentors</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <!-- From Uiverse.io by Zain-Muhammad -->
+        <form action="groups/notifications" method="get">
           <button class="available-for-btn">
             <div class="circle">
               <div class="dot"></div>
@@ -36,13 +42,13 @@
           </button>
         </form>
 
-         <% if(!currUser){ %>
-          <a href="/signup" class="btn btn-primary-custom me-2">Create Account</a>
-          <a href="/login" class="btn  btn-primary-custom me-2">Login</a>
-          <% } %> <% if(currUser){ %>
-          <a href="/logout" class="btn  btn-primary-custom me-2">Log out</a>
-          <% } %> 
-        </div>
+        <% if(!currUser){ %>
+        <a href="/signup" class="btn btn-primary-custom me-2">Create Account</a>
+        <a href="/login" class="btn btn-primary-custom me-2">Login</a>
+        <% } %> <% if(currUser){ %>
+        <a href="/logout" class="btn btn-primary-custom me-2">Log out</a>
+        <% } %>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>

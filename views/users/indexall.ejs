@@ -8,7 +8,7 @@
       <i class="fa-solid fa-users-rectangle me-2"></i> All Users
     </h4>
     <hr class="w-25 mx-auto mt-2" style="border-top: 2px solid #6a489d" />
-    <form action="/create-group" method="get">
+    <form action="/groups/create-group" method="get">
       <button
         type="submit"
         class="btn btn-primary-custom btn-lg border border-1 border-dark"
@@ -36,7 +36,7 @@
           ></a>
           <a href="<%= user.github %>"><i class="fab fa-github fa-lg"></i></a>
         </div>
-        <form action="/allusers" method="post">
+        <form action="/groups/allusers" method="post">
           <input type="hidden" name="memberId" value="<%= user._id %>" />
           <label class="wrapper">
             <input type="checkbox" name="confirm" onchange="if(this.checked)

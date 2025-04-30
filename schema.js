@@ -1,73 +1,28 @@
-// const Joi = require('joi');
+const Joi = require("joi");
 
-// const userSchema = Joi.object({
-//   user: Joi.object({
-//     email: Joi.string().email().required(),
-//     name: Joi.string()
-//       .min(2)
-//       .max(50)
-//       .required()
-//       .messages({
-//         'string.min': 'Name should be at least 2 characters long',
-//         'string.max': 'Name should not exceed 50 characters',
-//         'any.required': 'Name is required'
-//       }),
+userSchema = Joi.object({
+    user: Joi.object({
+        email: Joi.string().email().required(),
+        name: Joi.string().min(1).required(),
+        password: Joi.string().required(),
+        role: Joi.string().valid("student", "mentor").required(), // optional: restrict roles
+        domain: Joi.array().items(Joi.string()).default([]),
+        skills: Joi.array().items(Joi.string()).default([]),
+        linkedin: Joi.string().uri().allow(""),
+        github: Joi.string().uri().allow(""),
+        profileImage: Joi.string().uri().allow(""),
+        about: Joi.string().min(10).required(),
+    }).required()
+});
 
-//     role: Joi.string()
-//       .valid('Mentor', 'Student')
-//       .required()
-//       .messages({
-//         'any.only': 'Invalid role specified',
-//         'any.required': 'Role is required'
-//       }),
+module.exports.groupSchema = Joi.object({
+    group: Joi.object({
+        groupName: Joi.string().min(3).required(),
+        groupAdmin: Joi.string().hex().length(24).required(),
+        members: Joi.array().items(Joi.string()).default([]),
+        mentors: Joi.array().items(Joi.string()).default([]),
+        pendingMembers: Joi.array().items(Joi.string()).default([]),
+        description: Joi.string().max(500),
+    }).required()
+});
 
-//     domain:[ (Joi.string().min(2).max(30))
-//       .min(1)
-//       .required()
-//       .messages({
-//         'array.min': 'At least one domain is required',
-//         'any.required': 'Domain is required'
-//       })],
-
-//     skills: [(Joi.string().required())
-//       .required()],
-
-//     linkedin: Joi.string()
-//       .uri()
-//       .allow('')
-//       .messages({
-//         'string.uri': 'Please provide a valid LinkedIn URL'
-//       }),
-
-//     github: Joi.string()
-//       .uri()
-//       .allow('')
-//       .messages({
-//         'string.uri': 'Please provide a valid GitHub URL'
-//       }),
-
-//     about: Joi.string()
-//       .min(5)  // Changed from 5 to match error message
-//       .max(1000) // Changed from 150 to match error message
-//       .required()
-//       .messages({
-//         'string.min': 'About should be at least 20 characters',
-//         'string.max': 'About should not exceed 1000 characters',
-//         'any.required': 'About section is required'
-//       }),
-
-//     createdAt: Joi.date().default(Date.now),
-//     updatedAt: Joi.date().default(Date.now)
-//   }).required(),
-  
-//   password: Joi.string()
-//     .min(8)
-//     .pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])'))
-//     .required()
-//     .messages({
-//       'string.pattern.base': 'Password must contain uppercase, lowercase, number, and special character',
-//       'string.min': 'Password must be at least 8 characters'
-//     })
-// });
-
-// module.exports = userSchema;
