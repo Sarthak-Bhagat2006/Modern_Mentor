@@ -27,5 +27,8 @@
     "passport-local-mongoose": "^8.0.0",
     "passport-session": "^1.0.2",
     "router": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }

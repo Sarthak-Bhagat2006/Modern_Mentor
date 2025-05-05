@@ -1,60 +1,65 @@
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #1A1B27 !important; /* Deep navy black */
-  color: #F3F4F6 !important; /* Light gray/white */
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #1a1b27 !important; /* Deep navy black */
+  color: #f3f4f6 !important; /* Light gray/white */
   margin-top: 2rem;
   overflow-x: hidden;
 }
 
 .container {
-  background-color: #1A1B27;
+  background-color: #1a1b27;
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
 }
 
 .text-primary-custom {
-  color: #A78BFA !important; /* Soft purple */
+  color: #a78bfa !important; /* Soft purple */
 }
 
 .bg-primary-custom {
-  background-color: #A78BFA !important;
+  background-color: #a78bfa !important;
 }
 
 /* Primary Button */
 .btn-primary-custom {
-  background-color: #7C3AED !important; /* Bright purple */
-  border-color: #ffffff !important;
+  background-color: #7c3aed !important; /* Bright purple */
+  /* border-color: #ffffff !important; */
   color: #ffffff !important;
   transition: all 0.3s ease !important;
 }
 
 .btn-primary-custom:hover {
-  background-color: #6B21A8 !important; /* Hover: slightly darker purple */
-  border-color: #6B21A8 !important;
+  background-color: #6b21a8 !important; /* Hover: slightly darker purple */
+  border-color: #6b21a8 !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3) !important;
 }
 
 /* Outline Button */
 .btn-outline-primary-custom {
-  border-color: #A78BFA !important;
-  color: #A78BFA !important;
+  border-color: #a78bfa !important;
+  color: #a78bfa !important;
   transition: all 0.3s ease;
 }
 
 .btn-outline-primary-custom:hover {
-  background-color: #A78BFA !important;
-  color: #1A1B27 !important;
+  background-color: #a78bfa !important;
+  color: #1a1b27 !important;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(167, 139, 250, 0.25);
 }
 
 /* Navbar styling with glassmorphism */
 .navbar-glass {
-  background: #1A1B27 !important; /* Deep navy */
+  background: #1a1b27 !important; /* Deep navy */
   backdrop-filter: blur(5px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
@@ -64,22 +69,22 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-brand {
   font-weight: 700 !important;
   letter-spacing: -0.5px !important;
-  color: #A78BFA !important; /* Soft purple branding */
+  color: #a78bfa !important; /* Soft purple branding */
 }
 
 .nav-link {
-  color: #F3F4F6 !important; /* Light text */
+  color: #f3f4f6 !important; /* Light text */
   font-weight: 500 !important;
   margin: 0 0.5rem !important;
   transition: color 0.3s ease !important;
 }
 
 .nav-link:hover {
-  color: #A78BFA !important; /* Soft purple on hover */
+  color: #a78bfa !important; /* Soft purple on hover */
 }
 
 .nav-link.active {
-  color: #7C3AED !important; /* Bright purple when active */
+  color: #7c3aed !important; /* Bright purple when active */
   position: relative !important;
 }
 
@@ -90,14 +95,14 @@ h1, h2, h3, h4, h5, h6 {
   left: 0 !important;
   width: 100% !important;
   height: 2px !important;
-  background-color: #7C3AED !important; /* Underline with bright purple */
+  background-color: #7c3aed !important; /* Underline with bright purple */
 }
 .nav-link::after {
   content: "";
   display: block;
   height: 2px;
   width: 0%;
-  background-color: #A78BFA;
+  background-color: #a78bfa;
   transition: width 0.3s;
 }
 
@@ -105,33 +110,38 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 /* Hero section styling */
+
 .hero-section {
   min-height: 85vh;
-  min-width: 90vh;
-  background: linear-gradient(135deg, #1A1B27 0%, #2C1E48 100%); /* Deep navy to rich purple */
+  min-width: 100%;
+  background: linear-gradient(
+    135deg,
+    #1a1b27 0%,
+    #2c1e48 100%
+  ); /* Deep navy to rich purple */
   position: relative;
   overflow: hidden;
-  color: #F3F4F6; /* Light gray text */
+  color: #f3f4f6; /* Light gray text */
 }
 
 .hero-content {
-  padding-top: 120px;
+  /* padding-top: 120px; */
   z-index: 2;
   position: relative;
 }
 
 /* Optional: Title highlights */
 .hero-content h1 span {
-  color: #A78BFA; /* Soft purple for emphasis */
+  color: #a78bfa; /* Soft purple for emphasis */
 }
 
 .hero-illustration {
   /* position: absolute; */
-  right: -5%;
+
   bottom: -10%;
   width: 55%;
   /* opacity: 0.85; */
-  
+
   z-index: 1;
 }
 .img-fluid {
@@ -148,21 +158,16 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.4;
   z-index: 0;
   filter: blur(60px);
-  background: #7C3AED; /* Bright purple glow blob */
+  background: #7c3aed; /* Bright purple glow blob */
   border-radius: 50%;
 }
 .text {
-  color: #F3F4F6; /* Light gray text for dark backgrounds */
+  color: #f3f4f6; /* Light gray text for dark backgrounds */
   font-size: 1rem;
   line-height: 1.6;
   font-weight: 400;
   margin-bottom: 0.75rem;
 }
-
-
-
-
-
 
 /* Card styling with glassmorphism */
 .card-glass {
@@ -173,7 +178,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15); /* purple glow */
   transition: all 0.3s ease;
-  color: #F3F4F6;
+  color: #f3f4f6;
 }
 
 .card-glass:hover {
@@ -192,7 +197,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
   border-radius: 50%;
   overflow: hidden;
-  background: linear-gradient(45deg, #A78BFA, #7C3AED); /* Updated gradient */
+  background: linear-gradient(45deg, #a78bfa, #7c3aed); /* Updated gradient */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,30 +219,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .badge-mentor {
-  background-color: #7C3AED; /* Bright purple badge */
-  color: #F3F4F6;
+  background-color: #7c3aed; /* Bright purple badge */
+  color: #f3f4f6;
 }
 
 .badge-student {
-  background-color: #FACC15; /* Gold accent */
-  color: #1A1B27;
+  background-color: #facc15; /* Gold accent */
+  color: #1a1b27;
   font-weight: 600;
 }
 
 .social-links a {
-  color: #A78BFA;
+  color: #a78bfa;
   margin: 0 0.5rem;
   transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-  color: #FACC15;
+  color: #facc15;
 }
 
 /* Interest badges */
 .interest-badge {
   background-color: rgba(167, 139, 250, 0.2); /* transparent soft purple */
-  color: #A78BFA;
+  color: #a78bfa;
   font-weight: 500;
   margin: 0.2rem;
   padding: 0.35rem 0.75rem;
@@ -246,26 +251,48 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .interest-badge:hover {
-  background-color: #7C3AED;
-  color: #F3F4F6;
+  background-color: #7c3aed;
+  color: #f3f4f6;
 }
 
 /* Users grid header background */
+/* Base styles (desktop-first) */
 .users-header {
-  background: linear-gradient(135deg, #1A1B27 0%, #2C1E48 100%);
+  background: linear-gradient(135deg, #1a1b27 0%, #2c1e48 100%);
   padding: 5rem 0 3rem;
   position: relative;
   overflow: hidden;
-  color: #F3F4F6;
+  color: #f3f4f6;
+  text-align: center;
 }
 
+/* Tablet and below */
+@media (max-width: 991.98px) {
+  .users-header {
+    padding: 4rem 1rem 2.5rem;
+  }
+}
+
+/* Mobile */
 @media (max-width: 767.98px) {
+  .users-header {
+    padding: 3rem 1rem 2rem;
+  }
+
   .hero-illustration {
     opacity: 0.2;
   }
 
   .hero-content {
     padding-top: 90px;
+  }
+
+  .users-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .users-header p {
+    font-size: 1rem;
   }
 }
 
@@ -283,10 +310,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #7C3AEDaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #FACC15aa);
+  filter: drop-shadow(0 0 2em #7c3aedaa) !important;
 }
 
 @keyframes logo-spin {
@@ -309,7 +333,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .read-the-docs {
-  color: #9CA3AF;
+  color: #9ca3af;
 }
 
 .styled-image {
@@ -318,11 +342,9 @@ h1, h2, h3, h4, h5, h6 {
   height: 2rem;
 }
 
-          
-          
-/* From Uiverse.io by javierBarroso */ 
+/* From Uiverse.io by javierBarroso */
 .wrapper {
-  --background: #A78BFA;
+  --background: #a78bfa;
   --icon-color: #414856;
   --shape-color-01: #b8cbee;
   --shape-color-02: #7691e8;
@@ -373,7 +395,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 75px;
   border-radius: 70px;
   position: absolute;
-  background:#fff;
+  background: #fff;
   z-index: 2;
   padding: 20px 35px;
   box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
@@ -643,5 +665,3 @@ h1, h2, h3, h4, h5, h6 {
 .socials > a:hover {
   --scale: 1;
 }
-
-

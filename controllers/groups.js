@@ -7,7 +7,7 @@ const { groupSchema, userSchema } = require("../schema");
 
 
 
-const { isLoggedIn, isOwner, isAuthor } = require("../middleware");
+const { isLoggedIn } = require("../middleware");
 
 const wrapAsync = require("../utils/wrapAsync");
 const ExpressError = require("../utils/ExpressError");
