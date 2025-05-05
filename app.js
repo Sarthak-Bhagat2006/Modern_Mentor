@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const User = require("./models/user");
-const Group = require("./models/group");
+
+const Notification = require("./models/notification")
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require('ejs-mate');
@@ -74,6 +75,26 @@ app.use((req, res, next) => {
   res.locals.currUser = req.user;
   next();
 })
+
+
+//Checking for isNotified and store in Local
+app.use(async (req, res, next) => {
+  res.locals.isNotified = false; // default to false
+
+  if (req.user) {
+    try {
+      const notification = await Notification.exists({ reciver: req.user._id });
+      if (notification) {
+        res.locals.isNotified = true;
+      }
+    } catch (err) {
+      console.error("Error checking notifications:", err);
+      res.locals.isNotified = false;
+    }
+  }
+
+  next();
+});
 
 
 app.use("/", authRoutes);
