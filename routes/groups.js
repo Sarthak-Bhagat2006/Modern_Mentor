@@ -8,7 +8,7 @@ const Group = require("../models/group");
 const User = require("../models/user");
 const Notification = require("../models/notification");
 
-const { isLoggedIn, isOwner, isAuthor } = require("../middleware");
+const { isLoggedIn, isAdmin, isMember } = require("../middleware");
 const sendNotification = require("../notification");
 const wrapAsync = require("../utils/wrapAsync");
 const ExpressError = require("../utils/ExpressError");
@@ -48,11 +48,10 @@ router.get("/", wrapAsync(groupsController.allGroup));
 
 // View Single Group
 
-router.get("/show/:id", wrapAsync(groupsController.showGroup));
+router.get("/show/:id", isMember, wrapAsync(groupsController.showGroup));
 
 
 // Accept Group Request
-
 router.post("/accept", isLoggedIn, wrapAsync(groupsController.requestAccept));
 
 module.exports = router;

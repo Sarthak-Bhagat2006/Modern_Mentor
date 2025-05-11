@@ -106,8 +106,19 @@ module.exports.requestAccept = async (req, res) => {
     await Group.findByIdAndUpdate(groupId, {
         $push: { members: user },
         $pull: { pendingMembers: user }
+
     });
 
-    res.send("User accepted into the group!");
+    const group = await Group.findById(groupId)
+        .populate("Mentors", "name")
+        .populate("members", "name")
+        .populate("groupAdmin", "name");
+    console.log(group);
+
+    await Notification.findOneAndDelete({
+        group: groupId,
+        reciver: req.user._id
+    });
+    res.render("groups/show", { group });
 }
 

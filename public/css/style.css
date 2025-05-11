@@ -24,23 +24,25 @@ h6 {
   color: #a78bfa !important; /* Soft purple */
 }
 
-.bg-primary-custom {
-  background-color: #a78bfa !important;
-}
-
 /* Primary Button */
 .btn-primary-custom {
-  background-color: #7c3aed !important; /* Bright purple */
-  /* border-color: #ffffff !important; */
-  color: #ffffff !important;
-  transition: all 0.3s ease !important;
+  color: #f3f4f6 !important;
+  border-radius: 8px !important;
+  border: 1px solid #a78bfa !important;
+  padding: 0.6em 1.2em !important;
+  font-size: 1em !important;
+  font-weight: 500 !important;
+  font-family: inherit;
+  background-color: #1a1a1a !important;
+  cursor: pointer !important;
+  transition: border-color 0.25s !important;
 }
-
 .btn-primary-custom:hover {
-  background-color: #6b21a8 !important; /* Hover: slightly darker purple */
-  border-color: #6b21a8 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3) !important;
+  border-color: #646cff !important;
+}
+.btn-primary-custom:focus,
+.btn-primary-custom:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color !important;
 }
 
 /* Outline Button */
