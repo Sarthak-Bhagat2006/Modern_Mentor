@@ -2,22 +2,25 @@
 <body>
   <div class="container mt-5" style="max-width: 600px;">
     <br><br>
-    <h2 class="mb-4 text-center">Login</h2>
+    <h2 class="mb-4 text-center" >Login</h2>
     <form action="/login" method="POST">
       <div class="mb-3">
+        <i class="fa-regular fa-envelope"></i>
         <label for="email" class="form-label">Email address</label>
         <input
           type="email"
           class="form-control"
           id="email"
           name="email"
-          placeholder="Enter email"
+          placeholder="you@example.com"
           required
         />
       </div>
 
       <div class="mb-3">
+        <i class="fa-solid fa-lock"></i>
         <label for="password" class="form-label">Password</label>
+       
         <input
           type="password"
           class="form-control"
@@ -28,7 +31,7 @@
         />
       </div>
 
-      <button type="submit" class="btn btn-primary-custom me-2">Login</button>
+      <button type="submit" class="btn btn-primary-custom-gold me-2">Login</button>
     </form>
   </div>
 

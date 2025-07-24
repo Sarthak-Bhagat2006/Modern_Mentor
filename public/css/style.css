@@ -45,6 +45,47 @@ h6 {
   outline: 4px auto -webkit-focus-ring-color !important;
 }
 
+.btn-primary-custom-gold {
+  color: #f3f4f6 !important;
+  border-radius: 8px !important;
+  border: 1px solid gold !important;
+  padding: 0.6em 1.2em !important;
+  font-size: 1em !important;
+  font-weight: 500 !important;
+  font-family: inherit;
+  background-color: #1a1a1a !important;
+  cursor: pointer !important;
+  transition: border-color 0.25s !important;
+}
+.btn-primary-custom-gold:hover {
+  border-color: #1a1a1a !important;
+  color: gold !important;
+}
+.btn-primary-custom-gold:focus,
+.btn-primary-custom-gold:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color !important;
+}
+
+.btn-primary-custom-delete {
+  color: red !important;
+  border-radius: 8px !important;
+  border: 1px solid #fa8b8b !important;
+  padding: 0.6em 1.2em !important;
+  font-size: 1em !important;
+  font-weight: 500 !important;
+  font-family: inherit;
+  background-color: #1a1a1a !important;
+  cursor: pointer !important;
+  transition: border-color 0.25s !important;
+}
+.btn-primary-custom-delete:hover {
+  border-color: #ff6464 !important;
+}
+.btn-primary-custom-delete:focus,
+.btn-primary-custom-delete:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color !important;
+}
+
 /* Outline Button */
 .btn-outline-primary-custom {
   border-color: #a78bfa !important;

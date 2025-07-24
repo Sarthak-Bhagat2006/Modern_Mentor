@@ -1,28 +1,33 @@
-
-
 <% layout("/layouts/boilerplate") %>
-<br>
+<br />
 <div class="container mt-5">
   <div class="row justify-content-center">
     <!-- Profile Image -->
     <div class="profile-img-wrapper mb-3 mt-3 text-center">
-      <img  alt="<%= group.groupName %>" class="profile-img">
+      <img alt="<%= group.groupName %>" class="profile-img" />
     </div>
 
     <!-- User Info -->
     <div class="col-md-8 col-lg-6 text-center">
-      <br>
+      <br />
       <p><strong>Admin : </strong> <%= group.groupAdmin.name %></p>
       <p><strong>Mentor : </strong> <%= group.Mentors %></p>
-      <p><strong>Members : </strong><% group.members.forEach(member => { %>
+      <p>
+        <strong>Members : </strong><% group.members.forEach(member => { %>
         <span class="badge badge-mentor mb-2"><%= member.name %></span>
-      <% }); %></p>
-      
+        <% }); %>
+      </p>
+
       <p><strong>About:</strong> <%= group.description %></p>
-      
-     <br><br>
-      <a href="#" class="btn btn-light">Request to join</a>
+
+      <br /><br />
+
+      <a
+        href="http://localhost:5173/member/<%= group._id %>"
+        class="btn btn-primary-custom-gold me-2"
+        >Chat</a
+      >
     </div>
   </div>
 </div>
-<hr>
+<hr />

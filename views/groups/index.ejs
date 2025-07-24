@@ -1,54 +1,77 @@
 <% layout("/layouts/boilerplate") %>
 
 <body>
-    <body>
-        <br>
-        <br>
+  <br />
+  <br />
 
+  <div class="text-center my-4">
+    <h4 class="text-primary-custom fw-bold">
+      <i class="fa-solid fa-users-rectangle me-2"></i> All Groups
+    </h4>
+    <hr class="w-25 mx-auto mt-2" style="border-top: 2px solid #6a489d" />
+  </div>
 
-        <div class="text-center my-4">
-          <h4 class="text-primary-custom fw-bold">
-            <i class="fa-solid fa-users-rectangle me-2"></i> All Groups
-          </h4>
-          <hr class="w-25 mx-auto mt-2" style="border-top: 2px solid #6a489d;">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    <% for(let group of allGroups) { %>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card-glass profile-card p-4 text-center">
+        <div class="profile-img-wrapper mb-3">
+          <img
+            src="/images/default-group.png"
+            alt="<%= group.groupName %>"
+            class="profile-img"
+          />
         </div>
 
-          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-          <% for(let group of allGroups) { %>
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card-glass profile-card p-4 text-center ">
+        <h4 class="mb-1"><%= group.groupName %></h4>
 
-                <div class="profile-img-wrapper mb-3">
-                  <img src="" alt="<%= group.groupName %>" class="profile-img">
-                </div>
+        <span class="badge badge-mentor mb-2">
+          Mentor: <%= group.Mentors?.name || 'None' %>
+        </span>
 
-                <h4 class="mb-1"><%= group.groupName %> </h4>
+        <p>
+          <i
+            >Admin: <%= group.groupAdmin ? group.groupAdmin.name : 'Unknown'
+            %></i
+          >
+        </p>
 
-                <span class="badge badge-mentor mb-2">Mentor: <%= group.Mentors?.name %> </span>
-               
-                <i><p>Admin :<%= group.groupAdmin ? group.groupAdmin.name : 'Unknown' %></p></i>
+        <% if(group.members.length !== 0) { %>
+        <p>
+          Members: <% group.members.forEach(member => { %>
+          <span class="badge badge-mentor mb-2"><%= member.name %></span>
+          <% }) %>
+        </p>
+        <% } %> <% if(group.pendingMembers.length !== 0) { %>
+        <p>
+          Requested Members: <% group.pendingMembers.forEach(pendingMember => {
+          %>
+          <span class="badge badge-mentor mb-2"><%= pendingMember.name %></span>
+          <% }) %>
+        </p>
+        <% } %>
 
-                <% if(group.members.length != 0){  %>
-                <p>Members : <% group.members.forEach(member => { %>
-                  <span class="badge badge-mentor mb-2"><%= member.name %></span>
-                  <% }); %></p>
-                <% } %>
-                <% if(group.pendingMembers.length != 0){  %>
-                  <p>Requested Members : <% group.pendingMembers.forEach(pendingMember => { %>
-                    <span class="badge badge-mentor mb-2"><%= pendingMember.name %></span>
-                  <% }); %></p>
-                   </p>
-                <% } %>
-                
-                <div class="d-flex flex-wrap justify-content-center mb-3">
-                  <span class="interest-badge"><%= group.description %> </span>
-                  
-                </div>
-              </p>
-                <a href="/groups/show/<%= group.id %>" class="btn btn-sm btn-primary-custom">Show</a>
-              </div>
-            </div>
-      
-            <% } %>
-          </div>
+        <div class="d-flex flex-wrap justify-content-center mb-3">
+          <span class="interest-badge"><%= group.description %></span>
+        </div>
+
+        <div class="d-flex justify-content-center gap-2">
+          <form action="/groups/show/<%= group._id %>" method="GET">
+            <button type="submit" class="btn btn-sm btn-primary-custom">
+              Show
+            </button>
+          </form>
+
+          <% if(currUser && currUser._id.equals(group.groupAdmin._id)) { %>
+          <form action="/groups/delete/<%= group._id %>" method="POST">
+            <button type="submit" class="btn btn-sm btn-primary-custom-delete">
+              Delete
+            </button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
 </body>

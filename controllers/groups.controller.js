@@ -1,45 +1,51 @@
-const Group = require("../models/group");
-const User = require("../models/user");
-const Notification = require("../models/notification");
-const sendNotification = require("../notification");
-const { groupSchema, userSchema } = require("../schema");
 
+import Group from '../models/group.model.js';
+import User from '../models/user.model.js';
+import Notification from '../models/notification.model.js';
+import sendNotification from '../notification.js';
+import { groupSchema, userSchema } from '../schema.js';
 
+import wrapAsync from '../utils/wrapAsync.js';
+import ExpressError from '../utils/ExpressError.js';
 
+// --- Controller Functions ---
 
-const { isLoggedIn } = require("../middleware");
-
-const wrapAsync = require("../utils/wrapAsync");
-const ExpressError = require("../utils/ExpressError");
-
-module.exports.allusers = async (req, res) => {
+export async function allusers(req, res) {
     const allUsers = await User.find({ _id: { $ne: req.user._id } });
     const selectedMembers = req.session.selectedMembers || [];
     req.flash("success", "Send the request to members to join");
     res.render("users/indexall", { allUsers, selectedMembers });
 }
 
-module.exports.allRequest = async (req, res) => {
-    const user = req.body.memberId;
+export async function allRequest(req, res) {
+    const memberId = req.body.memberId;
+
+    if (!memberId) {
+        req.flash("error", "Invalid member selected.");
+        return res.redirect("/groups/allusers");
+    }
+
     if (!Array.isArray(req.session.selectedMembers)) {
         req.session.selectedMembers = [];
     }
-    if (!req.session.selectedMembers.includes(user)) {
-        req.session.selectedMembers.push(user);
+
+    if (!req.session.selectedMembers.includes(memberId)) {
+        req.session.selectedMembers.push(memberId);
+        req.flash("success", "User added to the request list.");
+    } else {
+        req.flash("error", "User already added to the request list.");
     }
+
     console.log(req.session.selectedMembers);
     res.redirect("/groups/allusers");
 }
 
-module.exports.groupFormRender = (req, res) => {
+export function groupFormRender(req, res) {
     res.render("groups/form");
 }
-module.exports.groupCreate = async (req, res) => {
-    const { groupName, description } = req.body;
 
-    if (!groupName || !description) {
-        throw new ExpressError(400, "Send valid data for group creation");
-    }
+export async function groupCreate(req, res) {
+    const { groupName, description } = req.body;
 
     req.session.currGroup = groupName;
 
@@ -68,15 +74,17 @@ module.exports.groupCreate = async (req, res) => {
     req.session.selectedMembers = []; // Clear selection
     req.flash("success", "Group created successfully!");
     res.redirect("/groups");
-};
-module.exports.notifications = async (req, res) => {
+}
+
+export async function notifications(req, res) {
     const notifications = await Notification.find({ reciver: req.user._id })
         .populate("sender", "name")
         .sort({ createdAt: -1 });
 
     res.render("notifications/index", { notifications });
 }
-module.exports.allGroup = async (req, res) => {
+
+export async function allGroup(req, res) {
     const allGroups = await Group.find({})
         .populate("groupAdmin", "name")
         .populate("members", "name")
@@ -85,7 +93,7 @@ module.exports.allGroup = async (req, res) => {
     res.render("groups/index", { allGroups });
 }
 
-module.exports.showGroup = async (req, res) => {
+export async function showGroup(req, res) {
     const { id } = req.params;
     const group = await Group.findById(id)
         .populate("Mentors", "name")
@@ -95,30 +103,32 @@ module.exports.showGroup = async (req, res) => {
     res.render("groups/show", { group });
 }
 
-module.exports.requestAccept = async (req, res) => {
+export async function requestAccept(req, res) {
     const user = req.user._id;
     const groupId = req.body.group;
 
-    if (!user || !groupId) {
-        throw new ExpressError(400, "Send valid data");
-    }
-
-    await Group.findByIdAndUpdate(groupId, {
-        $push: { members: user },
+    let group = await Group.findByIdAndUpdate(groupId, {
+        $addToSet: { members: user },
         $pull: { pendingMembers: user }
-
     });
-
-    const group = await Group.findById(groupId)
-        .populate("Mentors", "name")
-        .populate("members", "name")
-        .populate("groupAdmin", "name");
-    console.log(group);
 
     await Notification.findOneAndDelete({
         group: groupId,
         reciver: req.user._id
     });
-    res.render("groups/show", { group });
+
+    const updatedGroup = await Group.findById(groupId)
+        .populate("Mentors", "name")
+        .populate("members", "name")
+        .populate("groupAdmin", "name");
+
+    req.flash("success", `You have successfully joined the group: ${updatedGroup.groupName}`);
+    res.redirect(`/groups/show/${groupId}`);
 }
 
+export async function deleteGroup(req, res) {
+    let { id } = req.params;
+    await Group.findByIdAndDelete(id);
+    req.flash("success", "Group deleted successfully");
+    res.redirect("/groups");
+}

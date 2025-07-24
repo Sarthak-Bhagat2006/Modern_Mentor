@@ -1,18 +1,20 @@
-const Group = require("./models/group")
+import Group from './models/group.model.js';
 
-module.exports.isLoggedIn = (req, res, next) => {
+// Middleware: Check if user is authenticated
+export const isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.redirectUrl = req.originalUrl;
-
         req.flash("error", "You have to logged in first !!");
         return res.redirect("/login");
     }
+
     next();
 };
 
-module.exports.isAdmin = async (req, res, next) => {
-    let { id } = req.params;
-    let group = await Group.findById(id);
+// Middleware: Check if user is admin of the group
+export const isAdmin = async (req, res, next) => {
+    const { id } = req.params;
+    const group = await Group.findById(id);
 
     if (!group) {
         req.flash("error", "Group not found");
@@ -21,13 +23,16 @@ module.exports.isAdmin = async (req, res, next) => {
 
     if (!group.groupAdmin.equals(res.locals.currUser._id)) {
         req.flash("error", "You are not the Admin of group");
-        return res.redirect(`/groups`);
+        return res.redirect("/groups");
     }
+
     next();
-}
-module.exports.isMember = async (req, res, next) => {
-    let { id } = req.params;
-    let group = await Group.findById(id);
+};
+
+// Middleware: Check if user is a group member or admin
+export const isMember = async (req, res, next) => {
+    const { id } = req.params;
+    const group = await Group.findById(id);
 
     if (!group) {
         req.flash("error", "Group not found");
@@ -42,19 +47,16 @@ module.exports.isMember = async (req, res, next) => {
 
     if (!isMember && !isAdmin) {
         req.flash("error", "You are not a member of this group");
-        return res.redirect(`/groups`);
+        return res.redirect("/groups");
     }
-
 
     next();
 };
-module.exports.saveRedirectUser = (req, res, next) => {
+
+// Middleware: Save intended URL for redirect after login
+export const saveRedirectUser = (req, res, next) => {
     if (req.session.redirectUrl) {
         res.locals.redirectUrl = req.session.redirectUrl;
-
-
     }
     next();
 };
-
-

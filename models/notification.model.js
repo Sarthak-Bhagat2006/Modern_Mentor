@@ -1,6 +1,5 @@
-const { ref } = require("joi");
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+import mongoose from 'mongoose';
+const { Schema, model } = mongoose;
 
 const notificationSchema = new Schema({
     reciver: { type: Schema.Types.ObjectId, ref: "User" },
@@ -8,9 +7,9 @@ const notificationSchema = new Schema({
     message: { type: String },
     group: { type: Schema.Types.ObjectId, ref: "Group" },
     isRead: { type: Boolean, default: false },
-    createdAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now }
 });
 
-const Notification = mongoose.model("Notification", notificationSchema);
+const Notification = model("Notification", notificationSchema);
 
-module.exports = Notification;
+export default Notification;
